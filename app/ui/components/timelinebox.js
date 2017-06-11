@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import TimelineNode from './line'
+import TimelineDetail from './timelinedetail'
 
 export default class TimelineBox extends Component {
 
@@ -29,7 +30,7 @@ export default class TimelineBox extends Component {
     return (
       <View style={styles.timelinebox}>
         <TimelineNode date={this.props.date}/>
-        <Text>{this.props.title} {this.props.date}</Text>
+        <TimelineDetail title={this.props.title} date={this.props.date}/>
       </View>
     );
   }
@@ -40,6 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 64,
-    minHeight: 120,
+    minHeight: 100,
   },
 });
