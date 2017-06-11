@@ -22,12 +22,16 @@ export default class Timeline extends Component {
 
   render() {
 
+    let eoiDate = new Date("January 18, 2017")
+    let today = new Date()
+    let nickname = "Caiy"
+
     return (
       <ScrollView style={styles.container}>
-        <TimelineHeader nickname="Caiy"/>
+        <TimelineHeader nickname={nickname} duration={Math.floor((today-eoiDate)/(1000*3600*24))}/>
         <View style={styles.content}>
           <View style={styles.datetime}>
-            <Text style={styles.datetimeText}>SUNDAY 11 JUN, 2017</Text>
+            <Text style={styles.datetimeText}>{today.toDateString().toUpperCase()}</Text>
           </View>
           <FlatList
             data={[
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
   datetime: {
     backgroundColor: '#F5F5F5',
     height: 48,
-    paddingRight: 10,
+    paddingRight: 20,
     alignItems: 'flex-end',
     justifyContent: 'center',
   },
