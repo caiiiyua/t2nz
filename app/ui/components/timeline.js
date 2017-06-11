@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 3,
-    backgroundColor: 'skyblue',
   },
   datetime: {
     backgroundColor: '#F5F5F5',

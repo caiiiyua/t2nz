@@ -13,6 +13,8 @@ import {
   Image,
 } from 'react-native';
 
+import TimelineNode from './line'
+
 export default class TimelineBox extends Component {
 
   state = {
@@ -26,6 +28,7 @@ export default class TimelineBox extends Component {
   render() {
     return (
       <View style={styles.timelinebox}>
+        <TimelineNode date={this.props.date}/>
         <Text>{this.props.title} {this.props.date}</Text>
       </View>
     );
@@ -34,7 +37,9 @@ export default class TimelineBox extends Component {
 
 const styles = StyleSheet.create({
   timelinebox: {
-    backgroundColor: '#F8BBD0',
+    flex: 1,
+    flexDirection: 'row',
+    paddingLeft: 64,
     minHeight: 120,
   },
 });
