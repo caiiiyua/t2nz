@@ -32,10 +32,11 @@ export default class Timeline extends Component {
           <FlatList
             data={[
               {title: 'EOI', key: 'eoi', date: 'January 18, 2017'},
-              {title: 'AR', key: 'ar', date: 'May 01, 2017'},
+              {title: 'Invited To Apply', key: 'ita', date: 'Feburary 10, 2017'},
+              {title: 'Application Received', key: 'ar', date: 'May 01, 2017'},
               {title: 'Employment Investiment', key: 'ei', date: 'April 04, 2017'},
-              {title: 'OA', key: 'oa'},
-              {title: 'AIP', key: 'aip'}]}
+              {title: 'Online Approved', key: 'oa'},
+              {title: 'Approved In Principle', key: 'aip'}]}
             renderItem={({item}) =>
             <TimelineBox title={item.title} date={item.date}/>
           }/>

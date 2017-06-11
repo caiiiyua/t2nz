@@ -8,13 +8,26 @@ import {
 } from 'react-native';
 
 export default class TimelineDetail extends Component {
+
+  renderDatetime(date) {
+    if (date) {
+      return (
+      <View style={styles.dateContainer}>
+        <Text style={styles.date}>{this.props.date}</Text>
+      </View>);
+    } else {
+      return (
+      <View style={styles.dateContainerGrey}>
+        <Text style={styles.date}>Pending</Text>
+      </View>);
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{this.props.title}</Text>
-        <View style={styles.dateContainer}>
-          <Text style={styles.date}>{this.props.date}</Text>
-        </View>
+        {this.renderDatetime(this.props.date)}
       </View>
     );
   }
@@ -42,7 +55,16 @@ const styles = StyleSheet.create({
     minHeight: 27.5,
     borderWidth: 2,
     borderRadius: 6,
-    borderColor: '#EC407A',
+    borderColor: '#F48FB1',
+    padding: 3,
+    alignItems: 'center',
+  },
+  dateContainerGrey: {
+    maxWidth: 144,
+    minHeight: 27.5,
+    borderWidth: 2,
+    borderRadius: 6,
+    borderColor: '#BDBDBD',
     padding: 3,
     alignItems: 'center',
   }

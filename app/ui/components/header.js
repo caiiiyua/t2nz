@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   avatar: {
-    width: 84,
-    height: 84,
-    borderRadius: 32,
+    width: 92,
+    height: 92,
+    borderRadius: 24,
     backgroundColor: '#F48FB1',
     marginTop: 40,
   },

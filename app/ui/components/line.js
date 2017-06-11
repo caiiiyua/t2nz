@@ -8,12 +8,28 @@ import {
 } from 'react-native';
 
 export default class TimelineNode extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
+
+  renderLineNode(datetime) {
+    if (datetime) {
+      return (
         <View style={styles.line}>
           <View style={styles.node}></View>
         </View>
+      );
+    } else {
+      return (
+        <View style={styles.lineGrey}>
+          <View style={styles.nodeGrey}></View>
+        </View>
+      );
+    }
+  }
+
+  render() {
+
+    return (
+      <View style={styles.container}>
+        {this.renderLineNode(this.props.date)}
       </View>
     );
   }
@@ -28,12 +44,24 @@ const styles = StyleSheet.create({
   },
   line: {
     width: 4,
-    backgroundColor: '#00897B',
+    backgroundColor: '#66BB6A',
+  },
+  lineGrey: {
+    width: 4,
+    backgroundColor: '#BDBDBD',
   },
   node: {
     width: 18,
     height: 18,
-    backgroundColor: '#EC407A',
+    backgroundColor: '#F48FB1',
+    borderRadius: 9,
+    alignSelf: 'center',
+    marginTop: 24,
+  },
+  nodeGrey: {
+    width: 18,
+    height: 18,
+    backgroundColor: '#BDBDBD',
     borderRadius: 9,
     alignSelf: 'center',
     marginTop: 24,
