@@ -15,23 +15,44 @@ import {
   ScrollView
 } from 'react-native';
 
+import moment from 'moment';
+
 import TimelineHeader from './header'
 import TimelineBox from './timelinebox'
 
 export default class Timeline extends Component {
 
+  state = {today: moment()}
+
+  componentDidMount() {
+    console.log("componentDidMount")
+    setInterval(() => {
+      this.setState({today: this.state.today.add(1, 'days') })
+    }, 1000)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("componentDidUpdate: " + prevProps + prevState)
+  }
+
   render() {
 
-    let eoiDate = new Date("January 18, 2017")
-    let today = new Date()
+    // let eoiDate = new Date("January 18, 2017")
+    let eoiDate = moment("January 18, 2017", "MMMM D, YYYY")
+    let {today} = this.state
     let nickname = "Caiy"
+
+    let pendingDurationMilliseconds = today - eoiDate
+    let pendingDuration = Math.floor(moment.duration(pendingDurationMilliseconds, 'milliseconds').asDays())
+
+    console.log("render....")
 
     return (
       <ScrollView style={styles.container}>
-        <TimelineHeader nickname={nickname} duration={Math.floor((today-eoiDate)/(1000*3600*24))}/>
+        <TimelineHeader nickname={nickname} duration={pendingDuration}/>
         <View style={styles.content}>
           <View style={styles.datetime}>
-            <Text style={styles.datetimeText}>{today.toDateString().toUpperCase()}</Text>
+            <Text style={styles.datetimeText}>{today.format('dddd D MMM YYYY').toUpperCase()}</Text>
           </View>
           <FlatList
             data={[
