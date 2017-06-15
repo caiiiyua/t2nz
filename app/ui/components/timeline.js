@@ -45,7 +45,7 @@ export default class Timeline extends Component {
     let pendingDurationMilliseconds = today - eoiDate
     let pendingDuration = Math.floor(moment.duration(pendingDurationMilliseconds, 'milliseconds').asDays())
 
-    console.log("render....")
+    console.log("render...." + new Date("January 18, 2017").getTime())
 
     return (
       <ScrollView style={styles.container}>
@@ -63,7 +63,7 @@ export default class Timeline extends Component {
               {title: 'Online Approved', key: 'oa'},
               {title: 'Approved In Principle', key: 'aip'}]}
             renderItem={({item}) =>
-            <TimelineBox title={item.title} date={item.date}/>
+            <TimelineBox title={item.title} date={new Date(item.date).getTime()}/>
           }/>
         </View>
       </ScrollView>

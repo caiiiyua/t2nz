@@ -13,6 +13,8 @@ import {
   Image,
 } from 'react-native';
 
+import moment from 'moment';
+
 import TimelineNode from './line'
 import TimelineDetail from './timelinedetail'
 
@@ -24,13 +26,15 @@ export default class TimelineBox extends Component {
   }
 
   componentDidMount() {
-    state = this.props.data
+    this.setState(this.props)
   }
   render() {
+    let nodeDate = moment(this.state.date)
+
     return (
       <View style={styles.timelinebox}>
         <TimelineNode date={this.props.date}/>
-        <TimelineDetail title={this.props.title} date={this.props.date}/>
+        <TimelineDetail title={this.props.title} date={nodeDate.format("MMMM D, YYYY")}/>
       </View>
     );
   }
