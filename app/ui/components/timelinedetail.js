@@ -5,21 +5,33 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
+  TouchableHighlight,
+  Alert,
 } from 'react-native';
+
+import moment from 'moment';
 
 export default class TimelineDetail extends Component {
 
+  _onPressButton(date) {
+    Alert.alert(date)
+  }
+
   renderDatetime(date) {
     if (date) {
+      let mDate = moment(date).format('MMMM D, YYYY')
       return (
-      <View style={styles.dateContainer}>
-        <Text style={styles.date}>{this.props.date}</Text>
-      </View>);
+        <TouchableOpacity style={styles.dateContainer}
+          onPress={() => this._onPressButton(mDate)}>
+          <Text style={styles.date}>{mDate}</Text>
+        </TouchableOpacity>);
     } else {
       return (
-      <View style={styles.dateContainerGrey}>
-        <Text style={styles.date}>Pending</Text>
-      </View>);
+        <TouchableOpacity style={styles.dateContainer}
+          onPress={() => this._onPressButton("Pending")}>
+          <Text style={styles.date}>Pending</Text>
+        </TouchableOpacity>);
     }
   }
 
@@ -67,5 +79,15 @@ const styles = StyleSheet.create({
     borderColor: '#BDBDBD',
     padding: 3,
     alignItems: 'center',
+  },
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
   }
 });

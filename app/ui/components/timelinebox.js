@@ -29,12 +29,12 @@ export default class TimelineBox extends Component {
     this.setState(this.props)
   }
   render() {
-    let nodeDate = moment(this.state.date)
 
     return (
       <View style={styles.timelinebox}>
         <TimelineNode date={this.props.date}/>
-        <TimelineDetail title={this.props.title} date={nodeDate.format("MMMM D, YYYY")}/>
+        <TimelineDetail title={this.props.title}
+          date={this.props.date}/>
       </View>
     );
   }
