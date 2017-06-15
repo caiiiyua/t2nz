@@ -17,7 +17,7 @@ export default class TimelineDetail extends Component {
 
   constructor(props){
       super(props)
-      this.state = {date:"2017-06-15"}
+      this.state = {date:props.date}
   }
 
   _onPressButton(date) {
@@ -26,12 +26,10 @@ export default class TimelineDetail extends Component {
 
   renderDatetime(date) {
     if (date) {
-      let mDate = moment(date).format('MMMM D, YYYY')
       return (
-
           <DatePicker
           style={styles.dateContainer}
-          date={new Date(this.state.date)}
+          date={new Date(date)}
           mode="date"
           placeholder="select date"
           format="MMMM D, YYYY"
@@ -51,7 +49,7 @@ export default class TimelineDetail extends Component {
               minHeight: 27.5,
             }
           }}
-          onDateChange={(date) => {this.setState({date: date})}}
+          onDateChange={(newDate) => {this.setState({date: newDate})}}
           />
         );
     } else {
@@ -67,7 +65,7 @@ export default class TimelineDetail extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{this.props.title}</Text>
-        {this.renderDatetime(this.props.date)}
+        {this.renderDatetime(this.state.date)}
       </View>
     );
   }

@@ -26,9 +26,9 @@ export default class Timeline extends Component {
 
   componentDidMount() {
     console.log("componentDidMount")
-    setInterval(() => {
-      this.setState({today: this.state.today.add(1, 'days') })
-    }, 1000)
+    // setInterval(() => {
+    //   this.setState({today: this.state.today.add(1, 'days') })
+    // }, 1000)
   }
 
   componentDidUpdate(prevProps, prevState) {
