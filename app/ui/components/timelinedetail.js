@@ -11,8 +11,14 @@ import {
 } from 'react-native';
 
 import moment from 'moment';
+import DatePicker from 'react-native-datepicker'
 
 export default class TimelineDetail extends Component {
+
+  constructor(props){
+      super(props)
+      this.state = {date:"2017-06-15"}
+  }
 
   _onPressButton(date) {
     Alert.alert(date)
@@ -22,10 +28,32 @@ export default class TimelineDetail extends Component {
     if (date) {
       let mDate = moment(date).format('MMMM D, YYYY')
       return (
-        <TouchableOpacity style={styles.dateContainer}
-          onPress={() => this._onPressButton(mDate)}>
-          <Text style={styles.date}>{mDate}</Text>
-        </TouchableOpacity>);
+
+          <DatePicker
+          style={styles.dateContainer}
+          date={new Date(this.state.date)}
+          mode="date"
+          placeholder="select date"
+          format="MMMM D, YYYY"
+          minDate="2010-01-01"
+          maxDate="2050-01-01"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          showIcon={false}
+          TouchableComponent= {TouchableHighlight}
+          customStyles={{
+              dateTouchBody: {
+              height: 27.5,
+            },
+            dateInput: {
+              borderWidth: 0,
+              height: 27.5,
+              minHeight: 27.5,
+            }
+          }}
+          onDateChange={(date) => {this.setState({date: date})}}
+          />
+        );
     } else {
       return (
         <TouchableOpacity style={styles.dateContainer}
